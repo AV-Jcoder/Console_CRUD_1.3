@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Класс, реализующие доступ к текстовым файлам
@@ -89,6 +91,7 @@ public class GsonDeveloperRepositoryImpl extends DeveloperRepository {
                 String json = gson.toJson(developer);
                 byte[] buff = json.getBytes();
                 out.write(buff);
+                return true;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -113,5 +116,28 @@ public class GsonDeveloperRepositoryImpl extends DeveloperRepository {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<Developer> readAll() {
+        // Прочитать содержимое каталога.
+        // Отсеять директории, оставив только файлы с расширением .json
+        // Десериализовать файлы в объекты.
+        // Вернуть список объектов.
+        List<Developer> result = new ArrayList<Developer>();
+        File dir = new File(directory);
+        File[] files = dir.listFiles(f -> f.isFile() && f.getName().endsWith(type));
+        for (File f : files) {
+            try (FileInputStream in = new FileInputStream(f)) {
+                byte[] buff = new byte[in.available()];
+                in.read(buff);
+                String json = new String(buff);
+                Developer developer = gson.fromJson(json, Developer.class);
+                result.add(developer);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 }

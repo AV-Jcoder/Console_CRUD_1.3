@@ -94,6 +94,6 @@ public class Developer {
                 ", skills=" + skills +
                 ", speciality=" + speciality +
                 ", status=" + status +
-                '}';
+                "}\n";
     }
 }
