@@ -2,6 +2,7 @@ package repository;
 
 import com.google.gson.Gson;
 import model.Developer;
+import model.Status;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -104,14 +105,32 @@ public class GsonDeveloperRepositoryImpl extends DeveloperRepository {
         // удалить девелопера на основании
         // совпадения по полю id.
         // Чекнуть файл по имени, совпадающем со значением передаваемого параметра
-        // и если такой файл существует - удалить его и вернуть true, иначе вернуть false.
+        // и если такой файл существует - то Десериализовать его, поменять
+        // статус с ACTIVE на DELETED, а затем сереализовать обратно на диск.
+        Developer developer = null;
         File file = new File(directory, id + type);
         if (!file.exists()) {
             return false;
         } else {
-            try {
-                return file.delete();
-            } catch (SecurityException e) {
+            // Десериализация
+            try (FileInputStream in = new FileInputStream(file)) {
+                byte[] buff = new byte[in.available()];
+                in.read(buff);
+                String json = new String(buff);
+                developer = gson.fromJson(json, Developer.class);
+                developer.setStatus(Status.DELETED);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+            // Сериализация
+            try (FileOutputStream out = new FileOutputStream(file)) {
+                String json = gson.toJson(developer);
+                byte[] buff = json.getBytes();
+                out.write(buff);
+                // результат зафиксирован на диске, можно вернуть true.
+                return true;
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

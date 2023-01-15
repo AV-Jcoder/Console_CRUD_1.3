@@ -31,6 +31,9 @@ public class Main {
         System.out.println(repo.read(2));
         // считать все записи о девелоперах
         System.out.println("Получаем список всех Девелоперов:\n" + repo.readAll());
-
+        // удалить запись о девелопере с диска
+        System.out.println("Запись удалена?: " + repo.delete(1));
+        // Проверить, считав записи с диска
+        System.out.println("Получаем список всех Девелоперов:\n" + repo.readAll());
     }
 }
