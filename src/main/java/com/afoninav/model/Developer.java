@@ -1,4 +1,4 @@
-package model;
+package com.afoninav.model;
 
 import java.util.LinkedList;
 import java.util.List;

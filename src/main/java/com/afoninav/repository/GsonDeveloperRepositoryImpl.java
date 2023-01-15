@@ -1,8 +1,8 @@
-package repository;
+package com.afoninav.repository;
 
+import com.afoninav.model.Status;
+import com.afoninav.model.Developer;
 import com.google.gson.Gson;
-import model.Developer;
-import model.Status;
 
 import java.io.File;
 import java.io.FileInputStream;

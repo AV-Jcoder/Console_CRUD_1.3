@@ -1,11 +1,11 @@
-package model;
+package com.afoninav.model;
 
-public class Speciality {
+public class Skill {
     String title;
 
-    Speciality() {}
+    Skill() {}
 
-    public Speciality(String title) {
+    public Skill(String title) {
         this.title = title;
     }
 

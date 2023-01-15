@@ -1,9 +1,9 @@
-import controller.DeveloperController;
-import model.Developer;
-import model.Skill;
-import model.Speciality;
-import repository.GsonDeveloperRepositoryImpl;
-import view.DeveloperView;
+package com.afoninav;
+
+import com.afoninav.model.Developer;
+import com.afoninav.model.Skill;
+import com.afoninav.model.Speciality;
+import com.afoninav.repository.GsonDeveloperRepositoryImpl;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class Main {
         Developer developer2 = new Developer(2,"Petr","Petrov",
                 List.of(new Skill("Hacking"), new Skill("Testing")),new Speciality("C++ Developer"));
 //        DeveloperView developerView = new DeveloperView();
-//        DeveloperController controller = new DeveloperController();
+//        DeveloperController com.afoninav.controller = new DeveloperController();
         GsonDeveloperRepositoryImpl repo = new GsonDeveloperRepositoryImpl();
         // Записать девелоперов на диск
         System.out.println(repo.create(developer));

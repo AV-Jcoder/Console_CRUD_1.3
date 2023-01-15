@@ -1,6 +1,6 @@
-package repository;
+package com.afoninav.repository;
 
-import model.Developer;
+import com.afoninav.model.Developer;
 
 public abstract class DeveloperRepository implements GenericRepository<Developer, Integer> {
 }

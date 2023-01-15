@@ -1,4 +1,4 @@
-package controller;
+package com.afoninav.controller;
 
 /**
  * Обработка запросов от пользователя

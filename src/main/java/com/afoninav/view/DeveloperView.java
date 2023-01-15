@@ -1,4 +1,4 @@
-package view;
+package com.afoninav.view;
 
 /**
  * Все данные, необходимые для работы с консолью
