@@ -5,7 +5,7 @@ public class Skill {
 
     Skill() {}
 
-    Skill(String title) {
+    public Skill(String title) {
         this.title = title;
     }
 

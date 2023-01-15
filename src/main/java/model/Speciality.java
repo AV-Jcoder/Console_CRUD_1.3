@@ -5,7 +5,7 @@ public class Speciality {
 
     Speciality() {}
 
-    Speciality(String title) {
+    public Speciality(String title) {
         this.title = title;
     }
 

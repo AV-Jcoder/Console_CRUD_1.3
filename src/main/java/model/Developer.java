@@ -12,10 +12,10 @@ public class Developer {
     private Speciality speciality;
     private Status status;
 
-    Developer() {
+    public Developer() {
     }
 
-    Developer(int id, String firstName, String lastName, List<Skill> skills, Speciality speciality) {
+    public Developer(int id, String firstName, String lastName, List<Skill> skills, Speciality speciality) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
