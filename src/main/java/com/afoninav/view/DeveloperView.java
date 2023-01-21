@@ -2,7 +2,6 @@ package com.afoninav.view;
 
 import com.afoninav.controller.DeveloperController;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 /**
