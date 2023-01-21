@@ -9,7 +9,9 @@ public class AppRunner {
     public static void main(String[] args) {
 
         MainView mainView = new MainView();
-        mainView.showMainMenu();
-
+        while(true) {
+            mainView.showMainMenu();
+            mainView.translateUserChoice();
+        }
     }
 }

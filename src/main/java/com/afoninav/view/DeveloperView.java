@@ -26,7 +26,7 @@ public class DeveloperView {
      }
 
     public void readAllDevelopers() {
-        System.out.println("All records of Developers: ");
+        System.out.println("All records of Developers:\n");
          controller.getAllDevelopers()
                  .stream()
                  .forEach(System.out::println);
