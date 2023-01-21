@@ -3,9 +3,9 @@ package com.afoninav.repository;
 import java.util.List;
 
 interface GenericRepository<T,ID> {
-    boolean create(T t);
-    T read(ID id);
-    boolean update(T t);
-    boolean delete(ID id);
+    T create(T t);
+    T readById(ID id);
+    T update(T t);
+    boolean deleteById(ID id);
     List<T> readAll();
 }
