@@ -1,7 +1,8 @@
 package com.afoninav.model;
 
 public class Skill {
-    String title;
+    private int id;
+    private String title;
 
     Skill() {}
 
