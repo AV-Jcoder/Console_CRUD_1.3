@@ -28,13 +28,13 @@ public class DeveloperController {
     }
 
     public String createDeveloper(String firstName, String lastName, List<String> skills, String speciality) {
-        return gsonDevRepo.create(new Developer(firstName, lastName, listConverter(skills), new Speciality(speciality)))
-                == null ? "CREATED 0" : "CREATED 1";
+        Developer dev = gsonDevRepo.create(new Developer(firstName, lastName, listConverter(skills),
+                new Speciality(speciality)));
+        return dev == null ? "CREATED 0" : "CREATED 1";
     }
 
     public String getDeveloperById(int id) {
-        Developer developer = gsonDevRepo.readById(id);
-        return developer.toString();
+        return gsonDevRepo.readById(id).toString();
     }
 
     public String updateDeveloper(String firstName, String lastName, List<String> skills, String speciality) {
