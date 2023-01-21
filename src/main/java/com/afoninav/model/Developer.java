@@ -15,8 +15,7 @@ public class Developer {
     public Developer() {
     }
 
-    public Developer(int id, String firstName, String lastName, List<Skill> skills, Speciality speciality) {
-        this.id = id;
+    public Developer(String firstName, String lastName, List<Skill> skills, Speciality speciality) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.skills = new LinkedList<Skill>(skills);
@@ -87,13 +86,12 @@ public class Developer {
 
     @Override
     public String toString() {
-        return "Developer{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", skills=" + skills +
-                ", speciality=" + speciality +
-                ", status=" + status +
-                "}\n";
+        return String.format(
+                "Developer id: %s;\n" +
+                "name: %s %s;\n" +
+                "skills: %s;\n" +
+                "speciality: %s;\n" +
+                "status: %s;\n" +
+                "###################################\n",id,firstName,lastName,skills, speciality, status);
     }
 }

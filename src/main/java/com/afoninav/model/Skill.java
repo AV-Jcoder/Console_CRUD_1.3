@@ -12,6 +12,6 @@ public class Skill {
 
     @Override
     public String toString() {
-        return "'" + title + '\'';
+        return title;
     }
 }

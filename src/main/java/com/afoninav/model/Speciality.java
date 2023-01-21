@@ -12,6 +12,6 @@ public class Speciality {
 
     @Override
     public String toString() {
-        return "'" + title + '\'';
+        return title;
     }
 }
