@@ -13,7 +13,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-// TODO: write the interface's method body
 public class GsonSpecialityRepositoryImpl implements SpecialityRepository {
 
     private static final String FILE_PATH = "src/main/resources/specialities.json";
@@ -48,28 +47,29 @@ public class GsonSpecialityRepositoryImpl implements SpecialityRepository {
         return Objects.nonNull(speciality) ? speciality.getId()+1 : 1;
     }
 
+    // TODO: add body to interface's methods
     @Override
-    public Object create(Object o) {
+    public Speciality create(Speciality speciality) {
         return null;
     }
 
     @Override
-    public Object readById(Object o) {
+    public Speciality readById(Integer integer) {
         return null;
     }
 
     @Override
-    public Object update(Object o) {
+    public Speciality update(Speciality speciality) {
         return null;
     }
 
     @Override
-    public boolean deleteById(Object o) {
+    public boolean deleteById(Integer integer) {
         return false;
     }
 
     @Override
-    public List readAll() {
+    public List<Speciality> readAll() {
         return null;
     }
 }
