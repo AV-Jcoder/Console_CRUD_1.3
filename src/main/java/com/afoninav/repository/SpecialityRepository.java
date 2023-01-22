@@ -1,4 +1,6 @@
 package com.afoninav.repository;
 
-public interface SpecialityRepository extends GenericRepository {
+import com.afoninav.model.Speciality;
+
+public interface SpecialityRepository extends GenericRepository<Speciality, Integer> {
 }
