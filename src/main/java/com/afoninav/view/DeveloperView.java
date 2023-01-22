@@ -41,7 +41,7 @@ public class DeveloperView {
 
     public void updateDeveloper() {
         System.out.println("Enter developer's id for update: ");
-        int id = scanner.nextInt();
+        int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter new first name: ");
         String firstName = scanner.nextLine();
         System.out.println("Enter new surname: ");

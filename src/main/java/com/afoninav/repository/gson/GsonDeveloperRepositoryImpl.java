@@ -79,7 +79,11 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
         boolean result = existingDevelopers
                 .stream().anyMatch((n) -> {
                     if (n.getId() == dev.getId()){
-                        n = dev;
+                        n.setFirstName(dev.getFirstName());
+                        n.setLastName(dev.getLastName());
+                        n.setSkills(dev.getSkills());
+                        n.setSpeciality(dev.getSpeciality());
+                        n.setStatus(dev.getStatus());
                         return true;
                     } else {
                         return false;
