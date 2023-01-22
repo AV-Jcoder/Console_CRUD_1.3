@@ -12,8 +12,8 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
-// TODO: write interface's method body
 public class GsonSkillRepositoryImpl implements SkillRepository {
 
     private static final String FILE_PATH = "src/main/resources/skills.json";
@@ -50,26 +50,50 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public Skill create(Skill skill) {
-        return null;
+        List<Skill> existingSkills = readAllSkillsFromDisc();
+        int id = generateSkillId(existingSkills);
+        skill.setId(id);
+        existingSkills.add(skill);
+        writeAllSkillsToDisc(existingSkills);
+        return skill;
     }
 
     @Override
-    public Skill readById(Integer integer) {
-        return null;
+    public Skill readById(Integer id) {
+        List<Skill> skills = readAllSkillsFromDisc();
+        Skill skill = skills.stream()
+                .filter(n -> n.getId() == id)
+                .findFirst().orElse(null);
+        return skill;
     }
 
     @Override
     public Skill update(Skill skill) {
-        return null;
+        List<Skill> skills = readAllSkillsFromDisc();
+        boolean result = skills.stream().anyMatch(n -> {
+            if (n.getId() == skill.getId()) {
+                n.setTitle(skill.getTitle());
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return result ? skill : null;
     }
 
     @Override
-    public boolean deleteById(Integer integer) {
-        return false;
+    public boolean deleteById(Integer id) {
+        List<Skill> skills = readAllSkillsFromDisc();
+        int listSkillSize = skills.size();
+        skills = skills.stream()
+                .filter(n -> n.getId() == id)
+                .collect(Collectors.toList());
+        writeAllSkillsToDisc(skills);
+        return listSkillSize == skills.size();
     }
 
     @Override
     public List<Skill> readAll() {
-        return null;
+        return readAllSkillsFromDisc();
     }
 }
