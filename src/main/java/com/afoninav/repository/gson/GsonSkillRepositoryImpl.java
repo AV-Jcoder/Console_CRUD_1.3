@@ -4,6 +4,7 @@ import com.afoninav.model.Skill;
 import com.afoninav.repository.SkillRepository;
 import com.google.gson.Gson;
 
+import java.util.LinkedList;
 import java.util.List;
 
 // TODO: write interface's method body
@@ -11,6 +12,21 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     private static final String FILE_PATH = "src/main/resources/skills.json";
     private static final Gson GSON = new Gson();
+
+    private List<Skill> readAllSkillsFromDisc() {
+        // TODO: implement method body
+        return new LinkedList<>();
+    }
+
+    private void writeAllSkillsToDisc() {
+        // TODO: implement method body
+
+    }
+
+    private int generateSkillId() {
+        // TODO: implement method body
+        return 0;
+    }
 
     @Override
     public Skill create(Skill skill) {
