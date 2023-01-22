@@ -3,28 +3,49 @@ package com.afoninav.repository.gson;
 import com.afoninav.model.Speciality;
 import com.afoninav.repository.SpecialityRepository;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 // TODO: write the interface's method body
 public class GsonSpecialityRepositoryImpl implements SpecialityRepository {
 
-    private static final String FILE_PATH = "src/main/resources/skills.json";
+    private static final String FILE_PATH = "src/main/resources/specialities.json";
     private static final Gson GSON = new Gson();
 
     private List<Speciality> readAllSpecialitiesFromDisc() {
-        // TODO: impl method body
-        return new LinkedList<>();
+        LinkedList<Speciality> list = null;
+        try (FileInputStream in = new FileInputStream(FILE_PATH)) {
+            String json = new String(in.readAllBytes());
+            TypeToken<LinkedList<Speciality>> token = new TypeToken<>(){};
+            list = GSON.fromJson(json, token);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Objects.nonNull(list) ? list : new LinkedList<>();
     }
 
-    private void writeAllSpecialitiesToDisc() {
-        // TODO: impl method body
+    private void writeAllSpecialitiesToDisc(List<Speciality> list) {
+        try (FileOutputStream out = new FileOutputStream(FILE_PATH)) {
+            String json = GSON.toJson(list);
+            out.write(json.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private int generateId() {
-        // TODO imple method body
-        return 0;
+    private int generateId(List<Speciality> list) {
+        Speciality speciality = list
+                .stream()
+                .max(Comparator.comparing(Speciality::getId))
+                .orElse(null);
+        return Objects.nonNull(speciality) ? speciality.getId()+1 : 1;
     }
 
     @Override
