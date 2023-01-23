@@ -1,3 +1,5 @@
+Для запуска приложения выполнить AppRunner.main()
+
 Необходимо реализовать консольное CRUD приложение, которое имеет следующие сущности:
 
 Developer (id, firstName, lastName, List<Skill> skills, Specialty specialty)
