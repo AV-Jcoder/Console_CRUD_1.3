@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -55,6 +56,15 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public Developer create(Developer developer) {
+        // TODO: Реализовать проверку наличие json файла и если его нет, то его нужно создать
+        File file = new File(FILE_PATH);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            }  catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         List<Developer> existingDevelopers = readAllDevelopersFromDisc();
         int id = generateDeveloperId(existingDevelopers);
         developer.setId(id);
